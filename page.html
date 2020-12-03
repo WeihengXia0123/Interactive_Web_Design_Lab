@@ -1,0 +1,198 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="stylesheet" href="page.css">
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <script src="script.js"></script>
+
+        <!-- Load Leaflet from CDN -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+
+        <!-- Load Esri Leaflet from CDN -->
+        <script src="https://unpkg.com/esri-leaflet@2.5.0/dist/esri-leaflet.js"
+        integrity="sha512-ucw7Grpc+iEQZa711gcjgMBnmd9qju1CICsRaryvX7HJklK0pGl/prxKvtHwpgm5ZHdvAil7YPxI1oWPOWK3UQ=="
+        crossorigin=""></script>
+
+        <!-- Load Esri Leaflet Geocoder from CDN -->
+        <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder@2.3.3/dist/esri-leaflet-geocoder.css"
+        integrity="sha512-IM3Hs+feyi40yZhDH6kV8vQMg4Fh20s9OzInIIAc4nx7aMYMfo+IenRUekoYsHZqGkREUgx0VvlEsgm7nCDW9g=="
+        crossorigin="">
+        <script src="https://unpkg.com/esri-leaflet-geocoder@2.3.3/dist/esri-leaflet-geocoder.js"
+        integrity="sha512-HrFUyCEtIpxZloTgEKKMq4RFYhxjJkCiF5sDxuAokklOeZ68U2NPfh4MFtyIVWlsKtVbK5GD2/JzFyAfvT5ejA=="
+        crossorigin=""></script>
+    </head>
+
+    <header>
+        <h1 style="font-size:3vw">  A Video Streaming Website</h1>
+        <p align="center"> By Weiheng Xia</p>
+    </header>
+    
+    <body>
+        <nav class="nav">
+            <ul>
+                <li style="font-size:1vw"> <a href="/"><i class="fas fa-home"></i>Home</a> </li>
+                <li style="font-size:1vw"> <a href="https://weiheng.tech"><i class="fas fa-video"></i>Categories</a> </li>
+                <li style="font-size:1vw"> <a href="/"><i class="fas fa-history"></i>History</a></li>
+            </ul>
+        </nav>
+
+        <aside id="playlist">
+            <h1 style="font-size:1.5vw">My playlist</h1>
+            <ul>
+                <li><a href="/2016/06/" style="font-size:1vw">Playlist 1</a></li>
+                <li><a href="/2016/05/" style="font-size:1vw">Playlist 2</a></li>
+                <li><a href="/2016/04/" style="font-size:1vw">Playlist 3</a></li>
+            </ul>
+        </aside>
+
+        <section>
+            <input type="checkbox" id="check_controls" name="check_controls" value="false" onclick="check_hide_control()">
+            <label for="control_hide">hide the default controls of the original video</label><br>
+
+            <video id="myVideo_original" controls preload autoplay muted loop>
+                <source src="https://ia601303.us.archive.org/24/items/cCloud_20151126/cCloud.mp4#t=10" type="video/mp4">
+            </video>
+            <canvas style="width: 44%; height: auto;"id="mirrorCanvas"></canvas>
+
+            <div style="color: #74b2f0;width:44%; height:auto; float:left; display:inline;text-align: center;">Original Video</div> 
+            <div style="color: #74b2f0;width:44%; height:auto; float:left; display:inline;text-align: center;">Mirror Video<p></div> 
+
+            <input type="url" name="url" id="myURL" placeholder="https://video.mp4" pattern="https://.*" size="30" required >  
+            <button type="button" onclick="getURL()">Enter URL</button>
+
+            <input type="number" name="number" id="myNumber" placeholder="0"  size="30" required >  
+            <button type="button" onclick="getTime()">Enter time offset</button>
+            
+            <button type="button" onclick="previewVideo()" id="previewVideoButton">Preview the Video Below</button>
+            <button type="button" onclick="rotateVideo()" id="rotateVideoButton">Rotate the Video</button>
+            <button type="button" onclick="mirrorVideo()" id="mirrorButton">mirror the Video</button>
+
+            <canvas style="width: 44%; height: auto;" id="myCanvas"></canvas>
+            
+            <video  id="bubbleVideo" controls preload autoplay muted loop>
+                <source src="https://ia803103.us.archive.org/8/items/Videoplayback20_201806/videoplayback%281%29.mp4" type="video/mp4" >
+            </video>
+            <div style="color: #74b2f0;width:44%; height:auto; float:left; display:inline;text-align: center">Preview Canvas</div> 
+            <div style="color: #74b2f0;width:44%; height:auto; float:left; display:inline;text-align: center">Bubble Shape Video</div> 
+    
+        </section>
+
+        <section class="container" id='submission_form' >
+            <p><h3>Please create an account to see the comments.</h3></p>
+            <hr>
+
+            <label for="FirstName"><b>First Name</b></label>
+            <input type="text" placeholder="Enter First Name" name="FirstName" id="FirstName" required>
+
+            <label for="LastName"><b>Last Name</b></label>
+            <input type="text" placeholder="Enter Last Name" name="LastName" id="LastName" required>
+            <i class="fas fa-history"></i>
+            <label for="email"><b>Email</b></label>
+            <input type="email" placeholder="Enter Email" name="email" id="email" required>
+
+            <label for="phone"><b>Phone</b></label>
+            <input type="tel" placeholder="Enter Phone" name="phone" id="phone" required>
+
+            <hr>
+        
+            <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+            <button type="submit" class="registerbtn" onclick="ValidateRegistration()">Register</button>
+        </section>
+
+
+        <section class="container" id='login_form' style="display: none;">
+            <h1>Login</h1>
+            <hr>
+            
+            <label for="email"><b>Email</b></label>
+            <input type="email" placeholder="Enter Email" name="email" id="login_email" required>
+
+            <label for="phone"><b>Phone</b></label>
+            <input type="tel" placeholder="Enter Phone" name="phone" id="login_phone" required>
+            <hr>
+    
+            <button type="Login" class="registerbtn" onclick="validateLogIn()">Login</button>
+        </section>
+
+
+
+        <section id="comment-container">
+            <p><h3 class="comment-container-title">Comments</h3></p>
+  
+            <div class="comments" id="first_comment">
+              <div class="comment flex items-start justify-start">
+                <img
+                  class="comment-avatar"
+                  src="https://res.cloudinary.com/dr5l034cf/image/upload/v1604962695/profile-2_copy_ctkt5d.jpg"
+                />
+                <div class="flex-1">
+                    <h3 class="comment-author">Weiheng Xia</h3>
+                    <label id="comment_date">Date</label>, <label id="comment_city">Chengdu</label>, <label id="comment_country">China</label>
+                    local
+                    <div id="loc"></div>
+  
+                    <p class="comment-body">This is such a nice website! I hope you enjoy it!</p>
+  
+                    <script src="date.js" type="text/javascript"></script> 
+                    <script>
+                        curr_date=get_date(); 
+                        first_comment_date = document.getElementById("comment_date")
+                        first_comment_date.innerHTML = curr_date;
+                    </script>
+                </div>
+              </div>
+            </div>
+  
+            <div class="comment comment-new flex items-start justify-start">
+              <img class="comment-avatar" src="https://res.cloudinary.com/dr5l034cf/image/upload/v1604962695/profile-2_copy_ctkt5d.jpg"/>
+              <div class="flex-1">
+                <h3 class="comment-author">Weiheng Xia</h3>
+                <form action="#" class="comment-form">
+                  <textarea placeholder="Add a comment" class="comment-input">
+                    </textarea>
+                  <input type="submit" class="comment-submit" value="Reply" />
+                </form>
+              </div>
+            </div>
+        </section>
+        <script src="https://cdn.jsdelivr.net/gh/bigdatacloudapi/js-reverse-geocode-client@latest/bigdatacloud_reverse_geocode.min.js" type="text/javascript"></script>
+        <script src="comment.js" type="text/javascript"></script> 
+        
+        <details>
+            <summary>Map</summary>
+            <div id="my_map" style="width: 100%;; height: 400px;"></div>
+
+            <script>
+                navigator.geolocation.getCurrentPosition(drawMap)
+    
+                function drawMap(pos){
+                // center of the map
+                var center = [pos.coords.latitude, pos.coords.longitude]
+    
+                // Create the map
+                var map = L.map('my_map').setView(center, 12);
+    
+                // Set up the OSM layer
+                L.tileLayer(
+                'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 18
+                }).addTo(map);
+    
+                // add a marker in the given location
+                L.marker(center).addTo(map);
+                }
+            </script>
+        </details>
+
+
+
+    </body>
+
+</html>

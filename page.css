@@ -1,0 +1,326 @@
+body {
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    overflow-x: hidden;
+    padding-top: 78px;
+    color: #5f6061;
+}
+
+header{
+    text-align: center;
+}
+
+.nav{
+    border:1px solid #ccc;
+    border-width:1px 0;
+    list-style:none;
+    margin:0;
+    padding:0;
+    text-align:center;
+}
+.nav li{
+    display:inline;
+}
+.nav a{
+    display:inline-block;
+    padding:10px;
+}
+
+aside{
+    float:right;
+    width: 10%;
+    height: 50%;
+    /* border: 1px black solid; */
+    box-shadow: inset 0px 0px 2px 0px #545555;
+    font-style: italic;
+    color: #29627e;
+    text-align: center;
+}
+
+section video{
+    width: 44%;
+    height: auto;
+}
+
+/*bubble video*/
+#bubbleVideo {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/*sign-in*/
+form{
+    display: block;
+}
+* {box-sizing: border-box}
+
+/* Add padding to containers */
+.container {
+  padding: 16px;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for the submit/register button */
+.registerbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity:1;
+}
+
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+
+
+
+
+
+/* comment */
+* {
+    box-sizing: border-box;
+  }
+
+.flex {
+    display: flex;
+  }
+  
+  .flex-1 {
+    flex: 1;
+  }
+  
+  .items-start {
+    align-items: start;
+  }
+  
+  .justify-start {
+    justify-content: flex-start;
+  }
+  
+  .comment-container {
+    border-radius: 8px;
+    border: 1px solid #e2e2e2;
+    margin: 3rem auto;
+    max-width: 600px;
+    min-height: 200px;
+  }
+  
+  .comment-container-title {
+    background: #f8f8f8;
+    border-bottom: 1px solid #ebebeb;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    color: #2d3748;
+    margin-top: 0;
+    padding: 1rem 2rem;
+  }
+  
+  .comment {
+    margin-top: 1rem;
+    padding: 1rem 2rem;
+  }
+  
+  .comment-new {
+    border-top: 1px solid #ebebeb;
+    margin: 1rem 0;
+    padding-top: 2rem;
+  }
+*/
+  .comment-avatar {
+    border-radius: 50%;
+    height: 48px;
+    margin-right: 1rem;
+    width: 48px;
+  }
+
+  .comment-author {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    margin-top: 0;
+  }
+  
+  .comment-body {
+    color: #4a5568;
+    line-height: 1.4;
+    margin: 0;
+    padding-right: 1rem;
+  }
+  * {
+    box-sizing: border-box;
+  }
+
+.flex {
+    display: flex;
+  }
+  
+  .flex-1 {
+    flex: 1;
+  }
+  
+  .items-start {
+    align-items: start;
+  }
+  
+  .justify-start {
+    justify-content: flex-start;
+  }
+  
+  .comment-container {
+    border-radius: 8px;
+    border: 1px solid #e2e2e2;
+    margin: 3rem auto;
+    max-width: 600px;
+    min-height: 200px;
+  }
+  
+  .comment-container-title {
+    background: #f8f8f8;
+    border-bottom: 1px solid #ebebeb;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    color: #2d3748;
+    margin-top: 0;
+    padding: 1rem 2rem;
+  }
+  
+  .comment {
+    margin-top: 1rem;
+    padding: 1rem 2rem;
+  }
+  
+  .comment-new {
+    border-top: 1px solid #ebebeb;
+    margin: 1rem 0;
+    padding-top: 2rem;
+  }
+
+.comment-avatar {
+    border-radius: 50%;
+    height: 48px;
+    margin-right: 1rem;
+    width: 48px;
+  }
+
+  .comment-author {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    margin-top: 0;
+  }
+  
+  .comment-body {
+    color: #4a5568;
+    line-height: 1.4;
+    margin: 0;
+    padding-right: 1rem;
+  }
+  
+  .comment-input {
+    border-radius: 8px;
+    border: 1px solid #dddd;
+    box-sizing: border-box;
+    color: #4a5568;
+    font-size: 1rem;
+    line-height: 1.4;
+    padding: 0.8rem;
+    width: 100%;
+  }
+  
+  .comment-input:focus {
+    border-color: #5c6ac4;
+    outline: none;
+  }
+  
+  .comment-submit {
+    background: #5c6ac4;
+    border-radius: 4px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 12px;
+    letter-spacing: 0.05rem;
+    margin-top: 0.5rem;
+    padding: 10px 16px;
+    text-transform: uppercase;
+  }
+  
+  .comment-submit:hover,
+  .comment-submit:focus {
+    filter: brightness(110%);
+  }
+  .comment-input {
+    border-radius: 8px;
+    border: 1px solid #dddd;
+    box-sizing: border-box;
+    color: #4a5568;
+    font-size: 1rem;
+    line-height: 1.4;
+    padding: 0.8rem;
+    width: 100%;
+  }
+  
+  .comment-input:focus {
+    border-color: #5c6ac4;
+    outline: none;
+  }
+  
+  .comment-submit {
+    background: #5c6ac4;
+    border-radius: 4px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 12px;
+    letter-spacing: 0.05rem;
+    margin-top: 0.5rem;
+    padding: 10px 16px;
+    text-transform: uppercase;
+  }
+  
+  .comment-submit:hover,
+  .comment-submit:focus {
+    filter: brightness(110%);
+  }
+
+  #hide-test{
+    display: none;
+  }
+
+  #comment-container{
+      display:none;
+  }
